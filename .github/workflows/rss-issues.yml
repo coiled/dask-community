@@ -1,0 +1,31 @@
+name: rss-issues
+
+on:
+  schedule: 
+    - cron: "21 * * * *"
+
+jobs:
+  rss-issue:
+    strategy:
+      matrix:
+        feed:
+          - https://stackoverflow.com/feeds/tag/dask
+          - https://dask.discourse.group/latest.rss
+        include:
+          - feed: https://stackoverflow.com/feeds/tag/dask
+            labels: "stack-overflow,awaiting-triage"
+            prefix: "[Stack Overflow]"
+          - feed: https://dask.discourse.group/latest.rss
+            labels: "discourse,awaiting-triage"
+            prefix: "[Discourse]"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: guilhem/rss-issues-action@0.2.0
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          feed: ${{ matrix.feed }}
+          prefix: ${{ matrix.prefix }}
+          characterLimit: 255
+          dry-run: false
+          lastTime: 24h
+          labels: ${{ matrix.labels }}
