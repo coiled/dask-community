@@ -9,10 +9,10 @@ jobs:
     strategy:
       matrix:
         feed:
-          - https://stackoverflow.com/feeds/tag/dask
+          - https://stackoverflow.com/feeds/tag?tagnames=dask&sort=newest
           - https://dask.discourse.group/latest.rss
         include:
-          - feed: https://stackoverflow.com/feeds/tag/dask?sort=newest
+          - feed: https://stackoverflow.com/feeds/tag?tagnames=dask&sort=newest
             labels: "stack-overflow,awaiting-triage"
             prefix: "[Stack Overflow]"
           - feed: https://dask.discourse.group/latest.rss
