@@ -10,12 +10,12 @@ jobs:
       matrix:
         feed:
           - https://stackoverflow.com/feeds/tag?tagnames=dask&sort=newest
-          - https://dask.discourse.group/latest.rss
+          - https://dask.discourse.group/latest.rss?order=created
         include:
           - feed: https://stackoverflow.com/feeds/tag?tagnames=dask&sort=newest
             labels: "stack-overflow,awaiting-triage"
             prefix: "[Stack Overflow]"
-          - feed: https://dask.discourse.group/latest.rss
+          - feed: https://dask.discourse.group/latest.rss?order=created
             labels: "discourse,awaiting-triage"
             prefix: "[Discourse]"
     runs-on: ubuntu-latest
