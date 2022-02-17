@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: Get project data
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.BOARD_TOKEN }}
           ORGANIZATION: coiled
           PROJECT_NUMBER: 6
         run: |
@@ -37,7 +37,7 @@ jobs:
 
       - name: Add issues to project
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.BOARD_TOKEN }}
           ISSUE_ID: ${{ github.event.issues.node_id }}
         run: |
           item_id="$( gh api graphql -f query='
@@ -56,7 +56,7 @@ jobs:
 
       - name: Set fields
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.BOARD_TOKEN }}
         run: |
           gh api graphql -f query='
             mutation (
