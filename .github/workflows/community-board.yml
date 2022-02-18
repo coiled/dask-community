@@ -76,13 +76,4 @@ jobs:
                   id
                   }
               }
-              set_date_posted: updateProjectNextItemField(input: {
-                projectId: $project
-                itemId: $item
-                value: $date_value
-              }) {
-                projectNextItem {
-                  id
-                }
-              }
             }' -f project=$PROJECT_ID -f item=$ITEM_ID -f status_field=$STATUS_FIELD_ID -f status_value=${{ env.TODO_OPTION_ID }} -f date_value=$DATE --silent
