@@ -2,7 +2,7 @@ name: Add issues to community project board
 
 on:
   issues:
-    types: [opened, labeled, assigned]
+    types: [opened, assigned]
 
 jobs:
   track_issue:
